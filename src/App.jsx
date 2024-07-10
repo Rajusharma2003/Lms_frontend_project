@@ -1,10 +1,17 @@
 import './App.css'
 
+// import { Route, Routes } from 'react-router-dom'
+import { Routes } from 'react-router-dom'
+
 function App() {
 
   return (
     <>
-    lms test sucessfully
+     <Routes>
+
+      {/* <Route path='/' element={<Home/>}></Route> */}
+     </Routes>
+
     </>
   )
 }

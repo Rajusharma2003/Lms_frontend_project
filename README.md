@@ -50,3 +50,29 @@ npx tailwindcss init
 ###   Adding plugins and dependencies
 
 npm install @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp
+
+
+###  configure simple import sort 
+
+1.. install
+
+npm i eslint-plugin-simple-import-sort
+
+
+2... add rule in `.eslintrc.cjs`
+
+  =>  plugins: ['react-refresh', 'simple-import-sort'],   // add simple-import-sort
+
+  => 'simple-import-sort/imports' : 'error',  // add simple-import-sort
+
+
+3... To enable auto improt file save in vs code
+
+  open `setting` in vs code and then search "setting" in search box and then open `setting.json`and then add the following cofings =>
+       => "editor.codeActionsOnSave":{   // add this section also.
+        "source.fixAll.eslint": true 
+    }
+
+
+
+
