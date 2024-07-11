@@ -45,6 +45,11 @@ npx tailwindcss init
     @tailwind component;
     @tailwind utilities;
 
+5.. add the following details in the plugin property of tailwind config
+
+ => plugins: [ require("daisyui") , require("@tailwindcss/line-clamp")],
+
+
 
 
 ###   Adding plugins and dependencies

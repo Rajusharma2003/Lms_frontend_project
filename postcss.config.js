@@ -4,3 +4,6 @@ export default {
     autoprefixer: {},
   },
 }
+
+
+// npx tailwindcss init -p   This is the command to install "postcss.config.js"
