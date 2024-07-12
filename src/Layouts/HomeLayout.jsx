@@ -1,14 +1,14 @@
 
 import {AiFillCloseCircle} from "react-icons/ai"
 import {FiMenu} from "react-icons/fi"
-import {useDispatch, useSelector} from "react-redux"
+import { useSelector} from "react-redux"
 import {Link, useNavigate} from 'react-router-dom'
 
 import Footer from "../Components/Footer"
 function HomeLayout({children} ) {
 
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
 
@@ -64,7 +64,7 @@ function HomeLayout({children} ) {
                 <div className="drawer-side w-0   ">
                     <label htmlFor="my-drawer" className="drawer-overlay"></label>
 
-                    <ul className="menu p-4 w-48  sm:w-80 bg-base-200 text-base-content h-[220px]">
+                    <ul className="menu p-4 w-48 h-[100%]  sm:w-80 bg-base-200 text-base-content relative">
 
                         <li className="w-fit absolute right-2 z-50">
                             <button onClick={hideDrawer}>
@@ -106,7 +106,7 @@ function HomeLayout({children} ) {
                                     <Link to="/login">Login</Link>
                                 </button>
                                 <button className="secondary-button px-4 py-1 font-semibold rounded-md w-full bg-purple-600">
-                                    <Link to="/login">Sign Up</Link>
+                                    <Link to="/signUp">Sign Up</Link>
                                 </button>
                             </div>
 
