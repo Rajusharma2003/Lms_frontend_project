@@ -134,8 +134,11 @@ function HomeLayout({children} ) {
 
             </div>
 
+
+        {/*render child elemenmt  */}
         {children}
 
+        {/*render Footer element  */}
         <Footer/>
 
         </div>
