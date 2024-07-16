@@ -120,6 +120,7 @@ function HomeLayout({children} ) {
                                 <button className="primary-button px-4 py-1 font-semibold rounded-md w-full">
                                     <Link to="/user/profile">Profile</Link>
                                 </button>
+                                
                                 <button className="secondary-button px-4 py-1 font-semibold rounded-md w-full">
                                     <Link onClick={handleLogout}>Logout</Link>
                                 </button>
