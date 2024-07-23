@@ -77,7 +77,7 @@ function HomeLayout({children} ) {
                         </li>
 
                       {/* this is the conditional rendering for admin to user dashboard */}
-                        {isLoggedIn && role === "ADMIN" (
+                        {isLoggedIn && role === "ADMIN" && (
                             <li>
                                 <Link to="/admin/dashboard">
                                 Admin DashBoard
@@ -114,14 +114,14 @@ function HomeLayout({children} ) {
                         )}
 
                         {isLoggedIn && (
-                            <li className=" absolute left-4 w-[90%">
+                            <li className=" absolute bottom-0 w-[90%]">
 
                             <div className="w-full flex justify-center items-center">
-                                <button className="primary-button px-4 py-1 font-semibold rounded-md w-full">
+                                <button className="primary-button px-4 py-1 font-semibold rounded-md w-full bg-pink-600">
                                     <Link to="/user/profile">Profile</Link>
                                 </button>
                                 
-                                <button className="secondary-button px-4 py-1 font-semibold rounded-md w-full">
+                                <button className="secondary-button px-4 py-1 font-semibold rounded-md w-full bg-purple-600">
                                     <Link onClick={handleLogout}>Logout</Link>
                                 </button>
                             </div>
