@@ -1,27 +1,25 @@
-import './App.css'
+import './App.css';
 
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 
-import AboutUs from './Pages/AboutUsPage.jsx'
-import Homepage from './Pages/HomePage.jsx'
-import NotFound from './Pages/NotFoundPage.jsx'
-import SignUp from './Pages/SignUpPage.jsx'
-
-
-
+import AboutUs from './Pages/AboutUs';
+import HomePage from './Pages/HomePage';
+import Login from './Pages/Login';
+import NotFound from './Pages/NotFound';
+import Signup from './Pages/Signup';
 function App() {
 
   return (
     <>
-     <Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} ></Route>
+        <Route path="/about" element={<AboutUs />} ></Route>
 
-      <Route path='/' element={<Homepage/>}></Route>
-      <Route path='/about' element={<AboutUs/>}></Route>
-      <Route path='/signup' element={<SignUp/>}></Route>
-      <Route path='*' element={<NotFound/>}></Route>
-     </Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
 
-
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
     </>
   )
 }

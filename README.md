@@ -1,83 +1,103 @@
- ## LMS FORNTEND
+# LMS Frontend
 
+### Setup instruction
 
- ### SETUP INSTRUCTION
+1. Clone the project
 
-1... git clone
+```
+    git clone https://github.com/singhsanket143/lms-frontend-hn.git
+```
 
-    https://github.com/Rajusharma2003/Lms_frontend_project.git
+2. Move into the directory
 
-2.. move into the directory
+```
+    cd lms-frontend-hn
+```
 
-    cd LMS_FRONTEND  
+3. install dependencies
 
-3 .. install dependencies
-
+```
     npm i
+```
 
-4 .. run the server
+4. run the server
 
+```
     npm run dev
+```
 
 
 
+### Setup instructions for tailwind
 
-### SETUP INSTRUCTION FOR TAILWIND
+[Tail wind official instruction doc](https://tailwindcss.com/docs/installation)
 
-1 .. install tailwindcss 
+1. Install tailwindcss
 
-npm install -D tailwindcss postcss autoprefixer
+```
+    npm install -D tailwindcss postcss autoprefixer
+```
 
+2. Create tailwind config file 
 
-2.. create tailwindcss config file 
+```
+    npx tailwindcss init
+```
 
-npx tailwindcss init
+3. Add file extensions to tailwind config file in the contents property
+```
+    "./src/**/*.{html,js,jsx,ts,tsx}", "./index.html",
 
+```
 
-3.. add file extensions to the config file 
+4. Add the tailwind directives at the top of the `index.css` file
 
-    content: [ "./index.html" , "./src/**/*.{html,js,jsx,ts,tsx}"],
-
-
-4.. add the tailwind directives at the top of `index.css` file
-
+```
     @tailwind base;
-    @tailwind component;
+    @tailwind components;
     @tailwind utilities;
+```
 
-5.. add the following details in the plugin property of tailwind config
+5. Add the following details in the plugin property of tainwind config
 
- => plugins: [ require("daisyui") , require("@tailwindcss/line-clamp")],
+```
+    [require("daisyui"), require("@tailwindcss/line-clamp")]
+```
 
+### Adding plugins and dependencies 
 
-
-
-###   Adding plugins and dependencies
-
-npm install @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp
-
-
-###  configure simple import sort 
-
-1.. install
-
-npm i eslint-plugin-simple-import-sort
+```
+npm install @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axi
+os react-hot-toast @tailwindcss/line-clamp
+```
 
 
-2... add rule in `.eslintrc.cjs`
+### Configure auto import sort esline
 
-  =>  plugins: ['react-refresh', 'simple-import-sort'],   // add simple-import-sort
+1. Install simple import sore
 
-  => 'simple-import-sort/imports' : 'error',  // add simple-import-sort
+```
+    npm i -D eslint-plugin-simple-import-sort
+```
 
+2. Add rule in `.eslint.cjs`
 
-3... To enable auto improt file save in vs code
+```
+    'simple-import-sort/imports': 'error'
+```
 
-  open `setting` in vs code and then search "setting" in search box and then open `setting.json`and then add the following cofings =>
-       => "editor.codeActionsOnSave":{   // add this section also.
-        "source.fixAll.eslint": true 
+3. add simple-import sort plugin in `.eslint.cjs`
+
+```
+    plugins: [..., 'simple-import-sort']
+```
+
+4. To enable auto import sort on file save in vscode
+
+    - Open `settings.json`
+    - add the following config
+```
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     }
-
-
-
-
+```
