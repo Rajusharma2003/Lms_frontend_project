@@ -62,12 +62,12 @@ function Signup() {
             return;
         }
         // checking valid email
-        if(!isEmail(!signupData.email)) {
+        if(!isEmail(signupData.email)) {
             toast.error("Invalid email id");
             return;
         }
         // checking password validation
-        if( !isPassword(!signupData.password)) {
+        if( !isPassword(signupData.password)) {
             toast.error("Password should be 6 - 16 character long with atleast a number and special character");
             return;
         }

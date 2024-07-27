@@ -8,7 +8,7 @@ const initialState = {
 }
 
 
-export const getAllCourse = createAsyncThunk("/course/get" , async () => {
+export const getAllCourse = createAsyncThunk("/courses/get" , async () => {
 
     try {
         const res  = axiosInstance.get("/courses")

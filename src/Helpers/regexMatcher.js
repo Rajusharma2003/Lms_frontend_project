@@ -1,4 +1,3 @@
-
 // this funtion is match email is valid or not.
 export function isEmail(string) {
 
