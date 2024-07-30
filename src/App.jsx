@@ -28,7 +28,7 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
         {/* checked auth role */}
-        <Route element={<RequireAuth allowedRoles={["ADMIN"]}/>} >
+        <Route element={<RequireAuth allowedRoles={["USER"]}/>} >
         <Route path="/course/create" element={<CreateCourse/>} />
         </Route>
 
