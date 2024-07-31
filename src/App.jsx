@@ -12,7 +12,10 @@ import Denied from './Pages/Denied';
 import HomePage from './Pages/HomePage';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound';
+import GetProfile from './Pages/Profile';
 import Signup from './Pages/Signup';
+
+
 function App() {
 
   return (
@@ -28,8 +31,11 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
         {/* checked auth role */}
-        <Route element={<RequireAuth allowedRoles={["USER"]}/>} >
+        <Route element={<RequireAuth allowedRoles={["ADMIN"]}/>} >
         <Route path="/course/create" element={<CreateCourse/>} />
+        </Route>
+        <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]}/>} >
+        <Route path="/user/profile" element={<GetProfile/>} />
         </Route>
 
         <Route path="*" element={<NotFound />}></Route>
