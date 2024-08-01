@@ -1,5 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 import axiosInstance from "../Helpers/axiosInstance";
 import { isEmail } from "../Helpers/regexMatcher";
@@ -70,6 +72,14 @@ return (
             noValidate
             onSubmit={OnSubmitChange}
             className="flex flex-col justify-center items-center gap-2 p-5 rounded-md text-white shadow-[0_0_10px_black] w-[22rem]">
+
+    
+            <Link to="/">
+                    <p className="text-accent cursor-pointer  gap-2">
+                     <AiOutlineArrowLeft/>
+                    </p>
+             </Link>
+
 
                 <h1 className="text-3xl font-semibold">
                     Contact Form

@@ -1,3 +1,5 @@
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { BsPersonCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 
@@ -15,11 +17,24 @@ function GetProfile() {
 
             <div className=" min-h-[90vh] flex items-center justify-center">
                 <div className=" my-10 flex flex-col gap-4 p-4 w-96 rounded-lg text-white shadow-[0_0_10px_black]">
-                    <img
-                     src={userData?.avatar?.secure_url}
-                     alt="userProfile"
-                     className="w-40 m-auto rounded-full border border-black"
-                    />
+
+                <Link to="/">
+                            <p className="text-accent cursor-pointer  w-full gap-2">
+                               <AiOutlineArrowLeft/>
+                            </p>
+                        </Link>
+
+
+                    {userData?.avatar?.secure_url ? (
+                        <img
+                        src={userData?.avatar?.secure_url}
+                        className="w-40 m-auto rounded-full border border-black"
+                       />
+                    ) : (
+                        <BsPersonCircle className="w-28 h-28 rounded-full m-auto"/>
+                    )
+                    }
+                    
                     <h3 className=" text-xl font-semibold text-center capitalize">
                         {userData?.fullName}
                     </h3>
