@@ -17,7 +17,6 @@ const initialState = {
 export const getRazorpayId = createAsyncThunk('/razorpay/getId', async () => {
 
     try {
-        
         const response = await axiosInstance.get('/payments/razorpay-key');
         return response.data
 
@@ -30,12 +29,13 @@ export const getRazorpayId = createAsyncThunk('/razorpay/getId', async () => {
 export const purchaseCourseBundle = createAsyncThunk('/purchaseCourse', async () => {
 
     try {
-        
         const response = await axiosInstance.post('/payments/subscribe');
+        console.log(response.data);
         return response.data
 
     } catch (error) {
-        toast.error(error?.response?.data?.message)
+        // toast.error(error?.response?.data?.message)
+        toast.error('this is from purchaseCourseBundle error')
     }
 })
 
@@ -44,7 +44,6 @@ export const purchaseCourseBundle = createAsyncThunk('/purchaseCourse', async ()
 export const verifyUserPayment = createAsyncThunk('/payments/verify', async (data) => {
 
     try {
-        
         const response = await axiosInstance.post('/payments/verify', {
             razorpay_payment_id :data.razorpay_payment_id,
             razorpay_subscription_id :data.razorpay_subscription_id,
@@ -61,7 +60,6 @@ export const verifyUserPayment = createAsyncThunk('/payments/verify', async (dat
 export const getPaymentRecord = createAsyncThunk('/payments/record', async () => {
 
     try {
-        
         const response =  axiosInstance.get('/payments?count=100',);
         toast.promise( response , {
             loading : 'getting the payment records',
@@ -82,7 +80,6 @@ export const getPaymentRecord = createAsyncThunk('/payments/record', async () =>
 export const cancelCourseBundle = createAsyncThunk('/payments/cancel', async () => {
 
     try {
-        
         const response =  axiosInstance.post('/payments/unsubscribe',);
         toast.promise( response , {
             loading : 'unsubscribe the bundle',
@@ -133,4 +130,4 @@ const razorpaySlice = createSlice({
 
 
 
-export default razorpaySlice
+export default razorpaySlice.reducer
