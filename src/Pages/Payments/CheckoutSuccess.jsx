@@ -1,10 +1,23 @@
 // PaymentSuccessful.jsx
+import { useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import HomeLayout from '../../Layouts/HomeLayout';
+import { getUserData } from '../../Redux/Slices/AuthSlice';
+
 function CheckoutSuccess () {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserData())
+    },[])
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    
+    <HomeLayout>
+         <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
         <FaCheckCircle className="text-green-500 text-6xl mx-auto" />
         <h1 className="text-2xl font-semibold mt-4">Payment Successful</h1>
@@ -17,6 +30,8 @@ function CheckoutSuccess () {
         </Link>
       </div>
     </div>
+    </HomeLayout>
+   
   );
 }
 

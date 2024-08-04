@@ -89,6 +89,7 @@ export const getUserData = createAsyncThunk("/user/details" , async () => {
 
     try {
         const res = axiosInstance.get('user/me');
+        // console.log((await res).data);
         return (await res).data;
         
     } catch (error) {
@@ -119,6 +120,8 @@ const authSlice = createSlice({
             state.role = "";
         })
         .addCase(getUserData.fulfilled, (state , action) => {
+
+            console.log(action);
             localStorage.setItem("data", JSON.stringify(action?.payload?.user));
             localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("role", action?.payload?.user?.role);

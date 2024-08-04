@@ -1,15 +1,27 @@
+import toast from "react-hot-toast";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsPersonCircle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
+import { getUserData } from "../../Redux/Slices/AuthSlice";
+import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
 
 function GetProfile() {
 
     const dispatch = useDispatch();
     const userData = useSelector((state) => state?.auth?.data)
+    const navigate = useNavigate();
 
+    async function handleCancelsubs() {
+
+        toast('Initiating Cancellations')
+        await dispatch(cancelCourseBundle())
+        await dispatch(getUserData())
+        toast.success('Cancellations successfully')
+        navigate('/')
+    }
 
     return (
         <HomeLayout>
@@ -61,7 +73,7 @@ function GetProfile() {
 
                     {/* If user is in a "Active" state then we show the cancel subscription button */}
                     {userData?.subscription?.status === "active" && (
-                        <button className=" w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
+                        <button onClick={handleCancelsubs} className=" w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
                             Cancel Subscription
                         </button>
                     )}
