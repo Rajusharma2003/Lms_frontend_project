@@ -8,6 +8,8 @@ import ContactPage from './Pages/ContactUs';
 import CourseDescription from './Pages/Courses/CourseDescription';
 import CourseList from './Pages/Courses/CoursePage';
 import CreateCourse from './Pages/Courses/CreateCourse';
+import AddLecture from './Pages/Dashboard/AddLecture';
+import Displaylecture from './Pages/Dashboard/Displaylecture';
 import Denied from './Pages/Denied';
 import HomePage from './Pages/HomePage';
 import Login from './Pages/Login';
@@ -37,13 +39,16 @@ function App() {
         {/* checked auth role */}
         <Route element={<RequireAuth allowedRoles={["ADMIN"]}/>} >
         <Route path="/course/create" element={<CreateCourse/>} />
+        <Route path="/course/addlecture" element={<AddLecture/>} />
         </Route>
+
         <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]}/>} >
         <Route path="/user/profile" element={<GetProfile/>} />
         <Route path="/user/editprofile" element={<EditProfile/>} />
         <Route path="/checkout" element={<CheckoutPage/>} />
         <Route path="/checkout/success" element={<CheckoutSuccess/>} />
         <Route path="/checkout/fail" element={<CheckoutFail/>} />
+        <Route path="/course/displaylecture" element={<Displaylecture/>} />
         </Route>
 
         <Route path="*" element={<NotFound />}></Route>

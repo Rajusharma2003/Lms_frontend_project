@@ -9,11 +9,9 @@ import HomeLayout from '../Layouts/HomeLayout';
 import { createAccount } from '../Redux/Slices/AuthSlice';
 
 function Signup() {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    
     const [previewImage, setPreviewImage] = useState("");
 
     const [signupData, setSignupData] = useState({
@@ -24,51 +22,49 @@ function Signup() {
     });
 
     function handleUserInput(e) {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setSignupData({
             ...signupData,
             [name]: value
-        })
+        });
     }
 
-    function getImage(event) {
-        event.preventDefault();
-        // getting the image
-        const uploadedImage = event.target.files[0];
+    function getImage(e) {
+        e.preventDefault();
+        const uploadedImage = e.target.files[0];
 
-        if(uploadedImage) {
-            setSignupData({
-                ...signupData,
-                avatar: uploadedImage
-            });
+        if (uploadedImage) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(uploadedImage);
-            fileReader.addEventListener("load", function () {
-                setPreviewImage(this.result);
-            })
+            fileReader.addEventListener('load', function () {
+                setPreviewImage(fileReader.result);
+                setSignupData({
+                    ...signupData,
+                    avatar: uploadedImage
+                });
+            });
         }
     }
 
     async function createNewAccount(event) {
         event.preventDefault();
-        if(!signupData.email || !signupData.password || !signupData.fullName) {
+        if (!signupData.email || !signupData.password || !signupData.fullName) {
             toast.error("Please fill all the details");
             return;
         }
 
-        // checking name field length
-        if(signupData.fullName.length < 5) {
-            toast.error("Name should be atleast of 5 characters")
+        if (signupData.fullName.length < 5) {
+            toast.error("Name should be at least 5 characters");
             return;
         }
-        // checking valid email
-        if(!isEmail(signupData.email)) {
+
+        if (!isEmail(signupData.email)) {
             toast.error("Invalid email id");
             return;
         }
-        // checking password validation
-        if( !isPassword(signupData.password)) {
-            toast.error("Password should be 6 - 16 character long with atleast a number and special character");
+
+        if (!isPassword(signupData.password)) {
+            toast.error("Password should be 6 - 16 characters long with at least a number and special character");
             return;
         }
 
@@ -78,10 +74,17 @@ function Signup() {
         formData.append("password", signupData.password);
         formData.append("avatar", signupData.avatar);
 
-        // dispatch create account action
-        const response = await dispatch(createAccount(formData));
-        if(response?.payload?.success)
-            navigate("/");
+         // Log the FormData key-value pairs
+        //  for (let [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`);
+        // }
+
+        try {
+            const response = await dispatch(createAccount(formData));
+            if (response?.payload?.success) navigate("/");
+        } catch (error) {
+            toast.error("Failed to create account");
+        }
 
         setSignupData({
             fullName: "",
@@ -90,8 +93,6 @@ function Signup() {
             avatar: ""
         });
         setPreviewImage("");
-
-
     }
 
     return (
@@ -102,12 +103,12 @@ function Signup() {
 
                     <label htmlFor="image_uploads" className="cursor-pointer">
                         {previewImage ? (
-                            <img className="w-24 h-24 rounded-full m-auto" src={previewImage} />
+                            <img className="w-24 h-24 rounded-full m-auto" src={previewImage} alt="Preview" />
                         ) : (
                             <BsPersonCircle className='w-24 h-24 rounded-full m-auto' />
                         )}
                     </label>
-                    <input 
+                    <input
                         onChange={getImage}
                         className="hidden"
                         type="file"
@@ -117,8 +118,8 @@ function Signup() {
                     />
                     <div className='flex flex-col gap-1'>
                         <label htmlFor="fullName" className='font-semibold'> Name </label>
-                        <input 
-                            type="text" 
+                        <input
+                            type="text"
                             required
                             name="fullName"
                             id="fullName"
@@ -130,8 +131,8 @@ function Signup() {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <label htmlFor="email" className='font-semibold'> Email </label>
-                        <input 
-                            type="email" 
+                        <input
+                            type="email"
                             required
                             name="email"
                             id="email"
@@ -143,8 +144,8 @@ function Signup() {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <label htmlFor="password" className='font-semibold'> Password </label>
-                        <input 
-                            type="password" 
+                        <input
+                            type="password"
                             required
                             name="password"
                             id="password"
@@ -160,9 +161,8 @@ function Signup() {
                     </button>
 
                     <p className="text-center">
-                        Already have an account ? <Link to="/login" className='link text-accent cursor-pointer'> Login</Link>
+                        Already have an account? <Link to="/login" className='link text-accent cursor-pointer'>Login</Link>
                     </p>
-
                 </form>
             </div>
         </HomeLayout>
